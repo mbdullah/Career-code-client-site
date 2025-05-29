@@ -11,9 +11,15 @@ const Navbar = () => {
   }
     const links = <>
     <li><NavLink to="/">Home</NavLink></li>
+    {/* This is not right way applicant future we learn play role */}
     {
       user && <>
       <li><NavLink to="/myApplications">My Applications</NavLink></li>
+      </>
+    }
+    {
+      user && <>
+       <li><NavLink to="/addJob">Add Job</NavLink></li>
       </>
     }
     </>
