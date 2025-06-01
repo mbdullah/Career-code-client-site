@@ -13,6 +13,8 @@ const JobCard = ({ job }) => {
     requirements,
     _id
   } = job;
+  const salary = salaryRange || {};
+  console.log(salary);
   return (
     <div className="card bg-base-100  shadow-sm border">
       <div className="flex gap-2 items-center px-6 pt-3">
@@ -32,11 +34,11 @@ const JobCard = ({ job }) => {
           <div className="badge badge-secondary">NEW</div>
         </h2>
         <p>
-          Salary : {salaryRange.min} - {salaryRange.max} {salaryRange.currency}
+          Salary : {salary?.min} - {salary?.max} {salary?.currency}
         </p>
         <p>{description}</p>
         <div className="card-actions">
-          {requirements.map((req, index) => (
+          {requirements?.map((req, index) => (
             <div className="badge badge-outline" key={index}>
               {req}
             </div>

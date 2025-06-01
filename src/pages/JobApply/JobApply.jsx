@@ -19,6 +19,7 @@ const JobApply = () => {
     const application = {
       jobId,
       applicant: user.email,
+      status: "active",
       linkedin,
       github,
       resume,
