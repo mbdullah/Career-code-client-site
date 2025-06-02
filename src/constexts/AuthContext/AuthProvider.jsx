@@ -3,6 +3,7 @@ import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword } from 'firebase/auth/cordova';
 import {auth} from '../../firebase/firebase.init'
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import axios from 'axios';
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
@@ -27,6 +28,19 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setLoading(false);
+            if(currentUser?.email){
+                const userData = {email: currentUser.email};
+                
+                axios.post('http://localhost:3000/jwt', userData, {
+                    withCredentials: true
+                })
+                .then(res => {
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
             setUser(currentUser);
         })
         return ()=> unSubscribe();

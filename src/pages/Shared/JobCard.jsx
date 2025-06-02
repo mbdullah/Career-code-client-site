@@ -14,7 +14,6 @@ const JobCard = ({ job }) => {
     _id
   } = job;
   const salary = salaryRange || {};
-  console.log(salary);
   return (
     <div className="card bg-base-100  shadow-sm border">
       <div className="flex gap-2 items-center px-6 pt-3">
